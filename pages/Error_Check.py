@@ -4,14 +4,14 @@ import os
 
 openai.api_key =  os.getenv("APIKEY")
 
-
+use =st.text_input("What Was this code Supposed to do ?")
 code =st.text_input("Paste your code here")
-# error = st.text_input("Paste your error here")
+error = st.text_input("Paste your error here")
 language = st.text_input("Specify programming language")
 
 if st.button("Error Check and Fix :"):
 
-    inpt = "Find whats wrong the following code written in  "+ str(language) + " language ." + "Fix any errors in the code if present or make it better :" +  str(code)
+    inpt = "Fix the issue with the following code written in  "+ str(language) + " language ." + "The purpose of the code is to :" + str(use)+ " ."+ "The error that showed was :"+ str(error)
     st.write(inpt)
 
     outpt = openai.Completion.create(
