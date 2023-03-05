@@ -144,7 +144,7 @@ if st.button("generate and add to table") and len(url1)>0:
     else:
         st.header("You have finished your Free trial, Click on the Research Gap & Questions menu for the cool part.")
 
-
+st.stop()
 st.subheader("You can acccess the generated information in the table shown bellow ")
 st.session_state['df_result']
 
