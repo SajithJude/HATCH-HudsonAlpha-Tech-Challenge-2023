@@ -12,7 +12,7 @@ language = st.text_input("Specify programming language")
 if st.button("Error Check and Fix :"):
 
     inpt = "Fix the issue with the following code written in  "+ str(language) + " language ." + "The purpose of the code is to :" + str(use)+ " ."+ "The error that showed was :"+ str(error)
-    st.write(inpt)
+    # st.write(inpt)
 
     outpt = openai.Completion.create(
                                         engine="text-davinci-003",
@@ -23,5 +23,6 @@ if st.button("Error Check and Fix :"):
                                         temperature=0.5,
                                         )
     explan= outpt.choices[0].text.strip()
+    st.write("Fixed Code")
     st.code(explan)
     st.stop()
