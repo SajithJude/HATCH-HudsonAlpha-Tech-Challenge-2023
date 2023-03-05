@@ -23,5 +23,5 @@ if st.button("Error Check and Fix :"):
                                         temperature=0.5,
                                         )
     explan= outpt.choices[0].text.strip()
-    st.write(explan)
+    st.code(explan)
     st.stop()
