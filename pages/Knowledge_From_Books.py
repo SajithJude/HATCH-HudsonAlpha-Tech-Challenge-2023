@@ -9,10 +9,10 @@ src =st.text_input("Enter the URL of the Book")
 # error = st.text_input("Paste your error here")
 ques = st.text_input("Ask any questions you want from this book")
 
-if st.button("Error Check and Fix :"):
+if st.button("Submit"):
 
     inpt = str(ques) + ", Base your answers using the knowledge from this source : "+str(src)
-    st.write(inpt)
+    # st.write(inpt)
 
     reply = openai.Completion.create(
                                         engine="text-davinci-003",
@@ -23,5 +23,5 @@ if st.button("Error Check and Fix :"):
                                         temperature=0.5,
                                         )
     explan= reply.choices[0].text.strip()
-    st.code(explan)
+    st.caption(explan)
     st.stop()
