@@ -10,7 +10,7 @@ openai.api_key =  os.getenv("APIKEY")
 with st.expander("How to use"):
             st.markdown("""
     
-                #### Upload your dataset in CSV format, 
+                #### Upload your sequencing dataset in CSV format, 
                 #### Type a one line description about the dataset,
                 #### Select all the columns in the dataset
                 #### Enter a one line description about the Coulumn in each input field and press enter
