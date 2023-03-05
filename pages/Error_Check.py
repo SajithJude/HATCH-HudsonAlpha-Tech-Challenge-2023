@@ -1,6 +1,9 @@
 import streamlit as st
 
 
+openai.api_key =  os.getenv("APIKEY")
+
+
 code =st.text_input("Paste your code here")
 # error = st.text_input("Paste your error here")
 language = st.text_input("Specify programming language")
