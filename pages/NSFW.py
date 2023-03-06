@@ -49,7 +49,7 @@ def glassmorphism_card():
     </style>
     <div class="glassmorphism">
         <form>
-            <label for="input-text"> {input_text}</label>
+            <label for="input-text">Enter Text:</label>
             <br>
             <input type="text" id="input-text" name="input-text">
             <br>
