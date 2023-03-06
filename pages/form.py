@@ -9,7 +9,7 @@ st.set_page_config(
 )
 
 # Define styles
-st.markdown(
+components.html(
     """
     <style>
         body {
@@ -44,7 +44,7 @@ st.markdown(
 )
 
 # Define components
-menu = components.html(
+components.html(
     """
     <nav style="background: rgba(255, 255, 255, 0.3); padding: 20px;">
         <a href="#">Home</a>
@@ -67,7 +67,7 @@ sidebar = components.html(
     """
 )
 
-main_content = components.html(
+components.html(
     """
     <div class="glassmorphism">
         <h1>Main Tab Content</h1>
@@ -90,6 +90,4 @@ main_content = components.html(
 )
 
 # Render components
-components.html(menu)
-components.html(sidebar)
-components.html(main_content)
+
