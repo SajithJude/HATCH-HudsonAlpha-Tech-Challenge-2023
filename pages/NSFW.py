@@ -33,28 +33,14 @@ def glassmorphism_card():
             background-color: #f8f8f8;
             font-size: 16px;
         }
-        .glassmorphism button[type=submit] {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 16px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
     </style>
     <div class="glassmorphism">
-        <form>
+        
             <label for="input-text">Enter Text:</label>
             <br>
             <input type="text" id="input-text" name="input-text">
-            <br>
-            <button type="submit">Submit</button>
-        </form>
+            
+       
     </div>
     """
     return html_str
