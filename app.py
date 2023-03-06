@@ -3,6 +3,18 @@ import pandas as pd
 import openai
 import os 
 
+st.markdown(
+    """
+    <style>
+    body {
+        background-image: linear-gradient(to bottom right, #00ffff, #ff00ff);
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Add your Streamlit app code here
 
 st.markdown("# 4-1 ai chatbot gpt 3 based IT website")
 st.markdown("""
