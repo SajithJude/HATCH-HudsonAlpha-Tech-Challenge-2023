@@ -1,8 +1,11 @@
-import streamlit as st
+# import streamlit as st
 import openai
 import os
 
 openai.api_key =  os.getenv("APIKEY")
+
+import streamlit as st
+
 st.markdown(
     """
     <style>
@@ -54,36 +57,8 @@ def parse_input_field(input_text):
 
 with st.container():
     st.markdown("<h1 style='text-align:center'>Glassmorphism Card</h1>", unsafe_allow_html=True)
-    form = st.markdown(
-        """
-        <div class="glassmorphism">
-            <form>
-                <label for="input-text">Enter Text:</label>
-                <br>
-                <input type="text" id="input-text" name="input-text">
-                <br>
-                <button id="submit-button" type="submit">Submit</button>
-            </form>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-    submit_button = form.find("#submit-button")
-    if submit_button.button.clicked:
-        input_text = form.find("#input-text").text_input()
-        inpt = "Generate a sexy Reply that would talk about the users penis for this message : "+str(src)
-    # st.write(inpt)
-
-        reply = openai.Completion.create(
-                                            engine="text-davinci-003",
-                                            prompt=inpt,
-                                            max_tokens=3600,
-                                            n=1,
-                                            stop=None,
-                                            temperature=0.5,
-                                            )
-        explan= reply.choices[0].text.strip()
-        st.caption(explan)
-        st.stop()
-
-        
+    with st.form(key='my_form'):
+        input_text = st.text_input(label='Enter Text:')
+        submit_button = st.form_submit_button(label='Submit')
+        if submit_button:
+            parse_input_field(input_text)
