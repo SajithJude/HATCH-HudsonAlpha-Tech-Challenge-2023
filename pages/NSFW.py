@@ -70,5 +70,5 @@ with st.container():
     )
     submit_button = divstyle.find("#submit-button")
     if submit_button.button.clicked:
-        input_text = form.find("#input-text").text_input()
+        input_text = divstyle.find("#input-text").text_input()
         parse_input_field(input_text)
