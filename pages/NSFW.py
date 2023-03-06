@@ -3,10 +3,11 @@ import openai
 import os
 
 openai.api_key =  os.getenv("APIKEY")
-
 import streamlit as st
+from streamlit.components.v1 import html, div
 
-style = """
+def glassmorphism_card():
+    html_str = """
     <style>
         .glassmorphism {
             background: rgba(255, 255, 255, 0.5);
@@ -46,29 +47,19 @@ style = """
             border-radius: 4px;
         }
     </style>
+    <div class="glassmorphism">
+        <form>
+            <label for="input-text">Enter Text:</label>
+            <br>
+            <input type="text" id="input-text" name="input-text">
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
     """
-divstyle = """
-        <div class="glassmorphism">
-            <form>
-                <label for="input-text">Enter Text:</label>
-                <br>
-                <input type="text" id="input-text" name="input-text">
-                <br>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-        """
+    return html_str
 
-st.markdown(style,
-    unsafe_allow_html=True
-)
-
-with st.container():
-    st.markdown("<h1 style='text-align:center'>Glassmorphism Card</h1>", unsafe_allow_html=True)
-    form = st.markdown(divstyle,
-        unsafe_allow_html=True
-    )
-    # submit_button = divstyle.find("#submit-button")
-    # if submit_button.button.clicked:
-    input_text = divstyle.find("#input-text").text_input()
-    st.write(input_text)
+div(glassmorphism_card(), height=400)
+if st.form_submit_button():
+    input_text = st.text_input("Enter Text")
+    st.write(f"You entered: {input_text}")
