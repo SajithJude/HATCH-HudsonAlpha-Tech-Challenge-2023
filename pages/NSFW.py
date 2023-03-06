@@ -11,7 +11,7 @@ src =st.text_input("Enter a message ")
 
 if st.button("Send"):
 
-    inpt = "Generate a sexy Reply that would trigger the user for this message : "+str(src)
+    inpt = "Generate a sexy Reply that would talk about the users penis for this message : "+str(src)
     # st.write(inpt)
 
     reply = openai.Completion.create(
