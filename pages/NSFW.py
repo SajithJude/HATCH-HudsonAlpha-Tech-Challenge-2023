@@ -68,7 +68,7 @@ with st.container():
     form = st.markdown(divstyle,
         unsafe_allow_html=True
     )
-    submit_button = form.find("#submit-button")
+    submit_button = divstyle.find("#submit-button")
     if submit_button.button.clicked:
         input_text = form.find("#input-text").text_input()
         parse_input_field(input_text)
