@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit.components.v1 import html
+import streamlit.components.v1 as components
 
 # Define the HTML for the top navigation menu
 top_menu = """
@@ -57,5 +57,5 @@ page = """
 """
 
 # Render the HTML using the components API
-html_component = html(page)
+html_component = page
 components.html(html_component)
