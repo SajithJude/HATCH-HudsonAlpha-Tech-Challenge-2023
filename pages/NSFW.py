@@ -5,7 +5,7 @@ import os
 openai.api_key =  os.getenv("APIKEY")
 import streamlit as st
 import streamlit.components.v1 as components
-
+input_text = ""
 def glassmorphism_card():
     html_str = """
     <style>
