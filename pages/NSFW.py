@@ -25,3 +25,21 @@ if st.button("Send"):
     explan= reply.choices[0].text.strip()
     st.caption(explan)
     st.stop()
+
+
+if st.button("Generate caption"):
+
+    inpt = "Generate a sexy Instagram caption that would turn on audiences attention, for an image that describes the following : "+str(src)
+    # st.write(inpt)
+
+    reply = openai.Completion.create(
+                                        engine="text-davinci-003",
+                                        prompt=inpt,
+                                        max_tokens=3600,
+                                        n=1,
+                                        stop=None,
+                                        temperature=0.5,
+                                        )
+    explan= reply.choices[0].text.strip()
+    st.caption(explan)
+    st.stop()
