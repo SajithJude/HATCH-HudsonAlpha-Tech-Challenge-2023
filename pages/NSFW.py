@@ -9,6 +9,9 @@ import streamlit as st
 st.markdown(
     """
     <style>
+     body {
+            background-color: #f5f5ff;
+        }
         .glassmorphism {
             background: rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(5px);
