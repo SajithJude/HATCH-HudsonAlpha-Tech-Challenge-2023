@@ -6,8 +6,7 @@ openai.api_key =  os.getenv("APIKEY")
 
 import streamlit as st
 
-st.markdown(
-    """
+style = """
     <style>
         .glassmorphism {
             background: rgba(255, 255, 255, 0.5);
@@ -47,18 +46,8 @@ st.markdown(
             border-radius: 4px;
         }
     </style>
-    """,
-    unsafe_allow_html=True
-)
-
-def parse_input_field(input_text):
-    # Do something with the input text
-    st.write(f"You entered: {input_text}")
-
-with st.container():
-    st.markdown("<h1 style='text-align:center'>Glassmorphism Card</h1>", unsafe_allow_html=True)
-    st.markdown(
-        """
+    """
+divstyle = """
         <div class="glassmorphism">
             <form>
                 <label for="input-text">Enter Text:</label>
@@ -68,11 +57,18 @@ with st.container():
                 <button type="submit">Submit</button>
             </form>
         </div>
-        """,
+        """
+
+st.markdown(style,
+    unsafe_allow_html=True
+)
+
+with st.container():
+    st.markdown("<h1 style='text-align:center'>Glassmorphism Card</h1>", unsafe_allow_html=True)
+    form = st.markdown(divstyle,
         unsafe_allow_html=True
     )
-    with st.form(key='my_form'):
-        input_text = st.text_input(label='Enter Text:')
-        submit_button = st.form_submit_button(label='Submit')
-        if submit_button:
-            parse_input_field(input_text)
+    submit_button = form.find("#submit-button")
+    if submit_button.button.clicked:
+        input_text = form.find("#input-text").text_input()
+        parse_input_field(input_text)
