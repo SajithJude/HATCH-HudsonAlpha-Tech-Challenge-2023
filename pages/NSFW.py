@@ -57,6 +57,20 @@ def parse_input_field(input_text):
 
 with st.container():
     st.markdown("<h1 style='text-align:center'>Glassmorphism Card</h1>", unsafe_allow_html=True)
+    st.markdown(
+        """
+        <div class="glassmorphism">
+            <form>
+                <label for="input-text">Enter Text:</label>
+                <br>
+                <input type="text" id="input-text" name="input-text">
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
     with st.form(key='my_form'):
         input_text = st.text_input(label='Enter Text:')
         submit_button = st.form_submit_button(label='Submit')
