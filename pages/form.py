@@ -1,61 +1,95 @@
 import streamlit as st
-import streamlit.components.v1 as components
+from streamlit.components.v1 import components
 
-# Define the HTML for the top navigation menu
-top_menu = """
-<div style="background: linear-gradient(to right, #9C27B0, #E040FB); padding: 10px;">
-    <span style="color: white; font-size: 30px;">Glassmorphism Page</span>
-</div>
-"""
+st.set_page_config(
+    page_title="My Glassmorphism Page",
+    page_icon=":eyeglasses:",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
-# Define the HTML for the sidebar
-sidebar = """
-<div style="background: linear-gradient(to bottom, #9C27B0, #E040FB); padding: 10px;">
-    <span style="color: white; font-size: 20px;">Sidebar</span>
-</div>
-"""
+# Define styles
+st.markdown(
+    """
+    <style>
+        body {
+            background: linear-gradient(135deg, #ec008c, #fc6767);
+            color: white;
+        }
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            width: 100%;
+            margin: 30px 0;
+            padding: 50px;
+        }
+        .tab-content {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .tab-column {
+            width: 45%;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
-# Define the HTML for the glassmorphism card
-card = """
-<div style="background: linear-gradient(to bottom right, #9C27B0, #E040FB); border-radius: 20px; padding: 20px;">
-    <div style="display: flex; flex-direction: row; justify-content: space-between; margin-bottom: 20px;">
-        <div style="background: linear-gradient(to bottom, #FF6B6B, #FFC107); border-radius: 20px; padding: 20px; margin-right: 10px;">
-            <span style="color: white; font-size: 20px;">Column 1</span>
+# Define components
+menu = components.html(
+    """
+    <nav style="background: rgba(255, 255, 255, 0.3); padding: 20px;">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+    """
+)
+
+sidebar = components.html(
+    """
+    <div style="background: rgba(255, 255, 255, 0.3); padding: 20px;">
+        <h2>Sidebar</h2>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+    </div>
+    """
+)
+
+main_content = components.html(
+    """
+    <div class="glassmorphism">
+        <h1>Main Tab Content</h1>
+        <div class="tab-content">
+            <div class="tab-column">
+                <div class="glassmorphism">
+                    <h2>Card 1</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut pretium nibh non tellus euismod, eget euismod tellus aliquam. Duis efficitur dolor eros, id posuere urna congue vitae.</p>
+                </div>
+            </div>
+            <div class="tab-column">
+                <div class="glassmorphism">
+                    <h2>Card 2</h2>
+                    <p>Phasellus euismod arcu vel sapien vulputate auctor. Morbi tristique nunc in urna suscipit, eget suscipit neque semper. Aenean rhoncus tellus sed nulla iaculis, ut varius nunc gravida.</p>
+                </div>
+            </div>
         </div>
-        <div style="background: linear-gradient(to bottom, #64B5F6, #00E676); border-radius: 20px; padding: 20px; margin-left: 10px;">
-            <span style="color: white; font-size: 20px;">Column 2</span>
-        </div>
     </div>
-    <div style="background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(5px); border-radius: 10px; padding: 20px; color: #000;">
-        <h2 style="text-align: center;">Main Tab Card</h2>
-        <p>Content goes here</p>
-    </div>
-</div>
-"""
+    """
+)
 
-# Define the HTML for the main tab
-main_tab = """
-<div style="padding: 20px;">
-    <span style="font-size: 20px;">Main Tab Content</span>
-    <br><br>
-    <div style="display: flex; flex-direction: row;">
-        <div style="flex: 1; margin-right: 10px;">""" + card + """</div>
-        <div style="flex: 1;">""" + card + """</div>
-    </div>
-</div>
-"""
-
-# Define the HTML for the entire page
-page = """
-<div>
-    """ + top_menu + """
-    <div style="display: flex; flex-direction: row;">
-        <div style="flex: 1;">""" + sidebar + """</div>
-        <div style="flex: 4;">""" + main_tab + """</div>
-    </div>
-</div>
-"""
-
-# Render the HTML using the components API
-html_component = page
-components.html(html_component, height=480)
+# Render components
+components.html(menu)
+components.html(sidebar)
+components.html(main_content)
