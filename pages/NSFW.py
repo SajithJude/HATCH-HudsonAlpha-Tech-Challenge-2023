@@ -4,7 +4,7 @@ import os
 
 openai.api_key =  os.getenv("APIKEY")
 import streamlit as st
-from streamlit.components.v1 import html, div
+import streamlit.components.v1 as components
 
 def glassmorphism_card():
     html_str = """
@@ -59,7 +59,7 @@ def glassmorphism_card():
     """
     return html_str
 
-div(glassmorphism_card(), height=400)
+components.html(glassmorphism_card(), height=400)
 if st.form_submit_button():
     input_text = st.text_input("Enter Text")
     st.write(f"You entered: {input_text}")
