@@ -58,4 +58,4 @@ page = """
 
 # Render the HTML using the components API
 html_component = page
-components.html(html_component)
+components.html(html_component, height=480)
