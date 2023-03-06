@@ -49,7 +49,7 @@ def glassmorphism_card():
     </style>
     <div class="glassmorphism">
         <form>
-            <label for="input-text">Enter Text:</label>
+            <label for="input-text"> {input_text}</label>
             <br>
             <input type="text" id="input-text" name="input-text">
             <br>
@@ -60,6 +60,6 @@ def glassmorphism_card():
     return html_str
 
 components.html(glassmorphism_card(), height=400)
-if st.form_submit_button():
-    input_text = st.text_input("Enter Text")
-    st.write(f"You entered: {input_text}")
+# if st.form_submit_button():
+#     input_text = st.text_input("Enter Text")
+st.write(f"You entered: {input_text}")
