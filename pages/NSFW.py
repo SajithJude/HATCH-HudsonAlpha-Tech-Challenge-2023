@@ -3,15 +3,9 @@ import openai
 import os
 
 openai.api_key =  os.getenv("APIKEY")
-
-import streamlit as st
-
 st.markdown(
     """
     <style>
-     body {
-            background-color: #f5f5ff;
-        }
         .glassmorphism {
             background: rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(5px);
@@ -54,9 +48,13 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+def parse_input_field(input_text):
+    # Do something with the input text
+    st.write(f"You entered: {input_text}")
+
 with st.container():
     st.markdown("<h1 style='text-align:center'>Glassmorphism Card</h1>", unsafe_allow_html=True)
-    st.markdown(
+    form = st.markdown(
         """
         <div class="glassmorphism">
             <form>
@@ -64,49 +62,28 @@ with st.container():
                 <br>
                 <input type="text" id="input-text" name="input-text">
                 <br>
-                <button type="submit">Submit</button>
+                <button id="submit-button" type="submit">Submit</button>
             </form>
         </div>
         """,
         unsafe_allow_html=True
     )
-
-
-src =st.text_input("Enter a message ")
-# error = st.text_input("Paste your error here")
-# ques = st.text_input("Ask any questions you want from this book")
-
-if st.button("Send"):
-
-    inpt = "Generate a sexy Reply that would talk about the users penis for this message : "+str(src)
+    submit_button = form.find("#submit-button")
+    if submit_button.button.clicked:
+        input_text = form.find("#input-text").text_input()
+        inpt = "Generate a sexy Reply that would talk about the users penis for this message : "+str(src)
     # st.write(inpt)
 
-    reply = openai.Completion.create(
-                                        engine="text-davinci-003",
-                                        prompt=inpt,
-                                        max_tokens=3600,
-                                        n=1,
-                                        stop=None,
-                                        temperature=0.5,
-                                        )
-    explan= reply.choices[0].text.strip()
-    st.caption(explan)
-    st.stop()
+        reply = openai.Completion.create(
+                                            engine="text-davinci-003",
+                                            prompt=inpt,
+                                            max_tokens=3600,
+                                            n=1,
+                                            stop=None,
+                                            temperature=0.5,
+                                            )
+        explan= reply.choices[0].text.strip()
+        st.caption(explan)
+        st.stop()
 
-
-if st.button("Generate caption"):
-
-    inpt = "Generate a sexy Instagram caption that would turn on audiences attention, for an image that describes the following : "+str(src)
-    # st.write(inpt)
-
-    reply = openai.Completion.create(
-                                        engine="text-davinci-003",
-                                        prompt=inpt,
-                                        max_tokens=3600,
-                                        n=1,
-                                        stop=None,
-                                        temperature=0.5,
-                                        )
-    explan= reply.choices[0].text.strip()
-    st.caption(explan)
-    st.stop()
+        
